@@ -14,7 +14,10 @@ jobs:
     - run: |
         for changed_file in ${{ steps.files.outputs.all }}; do
           echo "Do something with this ${changed_file}."
-          cat ${changed_file}
+          FILE=${changed_file}
+          if [ -f "$FILE" ]; then
+            cat ${changed_file}
+          fi
         done
     # - uses: actions/checkout@master
     # - uses: jakejarvis/s3-sync-action@master

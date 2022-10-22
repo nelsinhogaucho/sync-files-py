@@ -15,11 +15,11 @@ ENV AWSCLI_VERSION='1.18.14'
 
 RUN pip install --quiet --no-cache-dir awscli==${AWSCLI_VERSION}
 
-# ADD entrypoint.sh /entrypoint.sh
+ADD entrypoint.sh /entrypoint.sh
 # ENTRYPOINT ["/entrypoint.sh"]
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
-COPY entrypoint.sh /entrypoint.sh
+#COPY entrypoint.sh /entrypoint.sh
 
 RUN ["chmod", "+x", "/entrypoint.sh"]
 

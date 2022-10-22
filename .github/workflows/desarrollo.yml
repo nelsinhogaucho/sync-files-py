@@ -41,7 +41,7 @@ jobs:
           --build-arg AWS_REGION='us-east-1' \
           --build-arg SOURCE_DIR='public' \
           --build-arg FILES='1' \
-          ./script
+          ./script/
     
     # - uses: actions/checkout@master
     # - uses: jakejarvis/s3-sync-action@master

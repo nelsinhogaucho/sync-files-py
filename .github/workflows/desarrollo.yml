@@ -36,12 +36,12 @@ jobs:
       run: |
         docker build \
           --file ./sync-files-py/Dockerfile \
-          --tag $CONTAINER_SHA \
-          --build-arg AWS_S3_BUCKET=${{ env.AWS_S3_BUCKET }} \
-          --build-arg AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }} \
-          --build-arg AWS_REGION='us-east-1' \
-          --build-arg SOURCE_DIR='public' \
-          --build-arg FILES='1'
+          --tag $CONTAINER_SHA #\
+          # --build-arg AWS_S3_BUCKET=${{ env.AWS_S3_BUCKET }} \
+          # --build-arg AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }} \
+          # --build-arg AWS_REGION='us-east-1' \
+          # --build-arg SOURCE_DIR='public' \
+          # --build-arg FILES='1'
     
     # - uses: actions/checkout@master
     # - uses: jakejarvis/s3-sync-action@master

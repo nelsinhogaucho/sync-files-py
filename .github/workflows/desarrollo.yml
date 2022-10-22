@@ -32,9 +32,11 @@ jobs:
     #   run: echo COLOR=steps.files.outputs.all | base64 -d >> $GITHUB_OUTPUT
     # - id: random-color-generator-2
     #   run: echo ${{ steps.random-color-generator.outputs.COLOR }}
+    - name: Check out code
+      uses: actions/checkout@v2
     - name: build the docker  
       run: |
-        docker build -t $CONTAINER_SHA ./sync-files-py/sync-files-py/ #\
+        docker build -t $CONTAINER_SHA ./sync-files-py/ #\
           # --build-arg AWS_S3_BUCKET=${{ env.AWS_S3_BUCKET }} \
           # --build-arg AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }} \
           # --build-arg AWS_REGION='us-east-1' \

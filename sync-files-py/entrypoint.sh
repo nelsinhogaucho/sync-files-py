@@ -2,7 +2,10 @@
 
 set -e
 echo "HOLA!"
-echo $FILES 
+
+time=$(date)
+echo "time=$time" >> $GITHUB_OUTPUT
+
 # for changed_file in ${FILES_DECODE}; do
 #   echo "Do something with this ${changed_file}."
 #   FILE=${changed_file}

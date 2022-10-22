@@ -35,7 +35,8 @@ jobs:
     - name: build the docker
       run: |
         docker build \
-          -t $CONTAINER_SHA \
+          --file ./sync-files-py/Dockerfile \
+          --tag $CONTAINER_SHA \
           --build-arg AWS_S3_BUCKET=${{ env.AWS_S3_BUCKET }} \
           --build-arg AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }} \
           --build-arg AWS_REGION='us-east-1' \

@@ -33,6 +33,7 @@ jobs:
     # - id: random-color-generator-2
     #   run: echo ${{ steps.random-color-generator.outputs.COLOR }}
     - name: build the docker
+    - uses: actions/checkout@v2
       run: |
         docker build \
           --file ./sync-files-py/Dockerfile \

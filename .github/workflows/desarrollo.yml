@@ -34,7 +34,6 @@ jobs:
     #   run: echo ${{ steps.random-color-generator.outputs.COLOR }}
     - name: build the docker
       run: |
-        cd script &
         docker build \
           -t $CONTAINER_SHA \
           --build-arg AWS_S3_BUCKET=${{ env.AWS_S3_BUCKET }} \

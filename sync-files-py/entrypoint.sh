@@ -2,7 +2,7 @@
 
 set -e
 echo "HOLA!"
-echo "$FILES" 
+echo $FILES 
 # for changed_file in ${FILES_DECODE}; do
 #   echo "Do something with this ${changed_file}."
 #   FILE=${changed_file}

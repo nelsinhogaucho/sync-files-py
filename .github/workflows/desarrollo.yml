@@ -45,7 +45,7 @@ jobs:
           --build-arg FILES=${{ steps.files.outputs.all }} \
           ./sync-files-py/
     - name: Get the output time
-        run: echo "The time was ${{ steps.upload_files.outputs.time }}"
+      run: echo "The time was ${{ steps.upload_files.outputs.time }}"
     # - uses: actions/checkout@master
     # - uses: jakejarvis/s3-sync-action@master
     #   with:

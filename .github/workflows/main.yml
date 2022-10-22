@@ -7,11 +7,16 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v2
+      - name: Git status files
+        id: files
+        uses: jitterbit/get-changed-files@v1
+        with:
+          format: 'csv'
       - name: Hello world action step
         id: hello
         uses: ./
         with:
-          who-to-greet: 'Mona the Octocat'
+          files-to-sync: ${{ steps.files.outputs.all }}
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"

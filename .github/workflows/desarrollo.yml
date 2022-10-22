@@ -31,14 +31,24 @@ jobs:
     #   run: echo COLOR=steps.files.outputs.all | base64 -d >> $GITHUB_OUTPUT
     # - id: random-color-generator-2
     #   run: echo ${{ steps.random-color-generator.outputs.COLOR }}
-    - uses: actions/checkout@master
-    - uses: jakejarvis/s3-sync-action@master
-      with:
-        args: --acl public-read --follow-symlinks --delete
-      env:
-        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_REGION: 'us-east-1'   # optional: defaults to us-east-1
-        SOURCE_DIR: 'public'      # optional: defaults to entire repository
-        FILES: '1' #${{ steps.files.outputs.all }} | base64 -d
+    - name: build the docker
+        run: |
+          docker build . --file dockerfile --tag upload-to-s3-script:$(date +%s) \
+          --build-arg \
+          AWS_S3_BUCKET=${{ env.AWS_S3_BUCKET }} \
+          AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }} \
+          AWS_REGION='us-east-1' \
+          SOURCE_DIR='public' \
+          FILES='1'
+    
+    # - uses: actions/checkout@master
+    # - uses: jakejarvis/s3-sync-action@master
+    #   with:
+    #     args: --acl public-read --follow-symlinks --delete
+    #   env:
+    #     AWS_S3_BUCKET: ${{ env.AWS_S3_BUCKET }}
+    #     AWS_ACCESS_KEY_ID: ${{ env.AWS_ACCESS_KEY_ID }}
+    #     AWS_SECRET_ACCESS_KEY: ${{ env.AWS_SECRET_ACCESS_KEY }}
+    #     AWS_REGION: 'us-east-1'   # optional: defaults to us-east-1
+    #     SOURCE_DIR: 'public'      # optional: defaults to entire repository
+    #     FILES: '1' #${{ steps.files.outputs.all }} | base64 -d

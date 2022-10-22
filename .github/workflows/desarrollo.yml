@@ -45,10 +45,10 @@ jobs:
     #       --build-arg FILES=${{ steps.files.outputs.all }} \
     #       ./sync-files-py/
     - name: Hello world action step
-        uses: ./ # Uses an action in the root directory
-        id: upload_files
-        with:
-          who-to-greet: 'NelsonSalinas'
+      uses: ./ # Uses an action in the root directory
+      id: upload_files
+      with:
+        who-to-greet: 'NelsonSalinas'
     - name: Get the output time
       run: echo "The time was ${{ steps.upload_files.outputs.time }}"
     # - uses: actions/checkout@master

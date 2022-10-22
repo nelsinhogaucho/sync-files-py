@@ -11,21 +11,22 @@ jobs:
     steps:
     - id: files
       uses: jitterbit/get-changed-files@v1
-    - run: |
-        for changed_file in ${{ steps.files.outputs.all }}; do
-          echo "Do something with this ${changed_file}."
-          FILE=${changed_file}
-          if [ -f "$FILE" ]; then
-            cat ${changed_file}
-          fi
-        done
-    # - uses: actions/checkout@master
-    # - uses: jakejarvis/s3-sync-action@master
-    #   with:
-    #     args: --acl public-read --follow-symlinks --delete
-    #   env:
-    #     AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-    #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    #     AWS_REGION: 'us-west-1'   # optional: defaults to us-east-1
-    #     SOURCE_DIR: 'public'      # optional: defaults to entire repository
+    # - run: |
+    #     for changed_file in ${{ steps.files.outputs.all }}; do
+    #       echo "Do something with this ${changed_file}."
+    #       FILE=${changed_file}
+    #       if [ -f "$FILE" ]; then
+    #         cat ${changed_file}
+    #       fi
+    #     done
+    - uses: actions/checkout@master
+    - uses: jakejarvis/s3-sync-action@master
+      with:
+        args: --acl public-read --follow-symlinks --delete
+      env:
+        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: 'us-east-1'   # optional: defaults to us-east-1
+        SOURCE_DIR: 'public'      # optional: defaults to entire repository
+        FILES: ${{ steps.files.outputs.all }}

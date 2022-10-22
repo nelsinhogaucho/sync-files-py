@@ -32,8 +32,7 @@ jobs:
     #   run: echo COLOR=steps.files.outputs.all | base64 -d >> $GITHUB_OUTPUT
     # - id: random-color-generator-2
     #   run: echo ${{ steps.random-color-generator.outputs.COLOR }}
-    - name: list dir
-        run: ls -la
+    - run: ls
     - name: build the docker
       run: |
         docker build \

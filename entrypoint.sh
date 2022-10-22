@@ -1,8 +1,8 @@
 #!/bin/sh
 
 set -e
-
-for changed_file in "$FILES"; do
+FILES_DECODE= echo "$FILES" | base64 --decode
+for changed_file in ${FILES_DECODE}; do
   echo "Do something with this ${changed_file}."
   FILE=${changed_file}
   if [ -f "$FILE" ]; then

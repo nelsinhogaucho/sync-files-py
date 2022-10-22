@@ -45,7 +45,7 @@ jobs:
     #       --build-arg FILES=${{ steps.files.outputs.all }} \
     #       ./sync-files-py/
     - name: Hello world action step
-        uses: ./sync-files-py/ # Uses an action in the root directory
+        uses: ./ # Uses an action in the root directory
         id: upload_files
         with:
           who-to-greet: 'NelsonSalinas'

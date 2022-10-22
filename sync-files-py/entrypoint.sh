@@ -1,6 +1,7 @@
 #!/bin/sh
 
 set -e
+echo "HOLA!"
 echo "$FILES" 
 # for changed_file in ${FILES_DECODE}; do
 #   echo "Do something with this ${changed_file}."
@@ -10,20 +11,20 @@ echo "$FILES"
 #   fi
 # done
 
-# if [ -z "$AWS_S3_BUCKET" ]; then
-#   echo "AWS_S3_BUCKET is not set. Quitting."
-#   exit 1
-# fi
+if [ -z "$AWS_S3_BUCKET" ]; then
+  echo "AWS_S3_BUCKET is not set. Quitting."
+  exit 1
+fi
 
-# if [ -z "$AWS_ACCESS_KEY_ID" ]; then
-#   echo "AWS_ACCESS_KEY_ID is not set. Quitting."
-#   exit 1
-# fi
+if [ -z "$AWS_ACCESS_KEY_ID" ]; then
+  echo "AWS_ACCESS_KEY_ID is not set. Quitting."
+  exit 1
+fi
 
-# if [ -z "$AWS_SECRET_ACCESS_KEY" ]; then
-#   echo "AWS_SECRET_ACCESS_KEY is not set. Quitting."
-#   exit 1
-# fi
+if [ -z "$AWS_SECRET_ACCESS_KEY" ]; then
+  echo "AWS_SECRET_ACCESS_KEY is not set. Quitting."
+  exit 1
+fi
 
 # # Default to us-east-1 if AWS_REGION not set.
 # if [ -z "$AWS_REGION" ]; then

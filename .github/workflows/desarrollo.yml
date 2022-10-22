@@ -21,7 +21,7 @@ jobs:
     #     done
     #- name: Set files to base64 enconde
     - id: random-color-generator
-      run: COLOR=steps.files.outputs.all | base64 -d >> $GITHUB_OUTPUT
+      run: echo COLOR=steps.files.outputs.all | base64 -d >> $GITHUB_OUTPUT
     - id: random-color-generator-2
       run: echo ${{ steps.random-color-generator.outputs.COLOR }}
     - uses: actions/checkout@master

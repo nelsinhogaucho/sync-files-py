@@ -9,4 +9,4 @@ RUN ls -la
 RUN chmod -R 765 entrypoint.sh
 RUN ls -la
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["entrypoint.sh"]

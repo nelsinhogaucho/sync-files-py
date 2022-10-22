@@ -35,7 +35,7 @@ jobs:
     - name: build the docker
       run: |
         docker build \
-          -t $CONTAINER_SHA ./script/dockerfile \
+          -t $CONTAINER_SHA ./script \
           --build-arg \
           AWS_S3_BUCKET=${{ env.AWS_S3_BUCKET }} \
           AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }} \

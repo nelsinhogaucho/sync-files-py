@@ -1,14 +1,14 @@
 #!/bin/sh
 
 set -e
-FILES_DECODE= echo "$FILES" | base64 --decode
-for changed_file in ${FILES_DECODE}; do
-  echo "Do something with this ${changed_file}."
-  FILE=${changed_file}
-  if [ -f "$FILE" ]; then
-    cat ${changed_file}
-  fi
-done
+echo "$FILES" 
+# for changed_file in ${FILES_DECODE}; do
+#   echo "Do something with this ${changed_file}."
+#   FILE=${changed_file}
+#   if [ -f "$FILE" ]; then
+#     cat ${changed_file}
+#   fi
+# done
 
 # if [ -z "$AWS_S3_BUCKET" ]; then
 #   echo "AWS_S3_BUCKET is not set. Quitting."

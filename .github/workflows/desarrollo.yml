@@ -11,6 +11,7 @@ jobs:
     steps:
     - id: files
       uses: jitterbit/get-changed-files@v1
+      format: 'csv'
     # - run: |
     #     for changed_file in ${{ steps.files.outputs.all }}; do
     #       echo "Do something with this ${changed_file}."
@@ -20,10 +21,10 @@ jobs:
     #       fi
     #     done
     #- name: Set files to base64 enconde
-    - id: random-color-generator
-      run: echo COLOR=steps.files.outputs.all | base64 -d >> $GITHUB_OUTPUT
-    - id: random-color-generator-2
-      run: echo ${{ steps.random-color-generator.outputs.COLOR }}
+    # - id: random-color-generator
+    #   run: echo COLOR=steps.files.outputs.all | base64 -d >> $GITHUB_OUTPUT
+    # - id: random-color-generator-2
+    #   run: echo ${{ steps.random-color-generator.outputs.COLOR }}
     - uses: actions/checkout@master
     - uses: jakejarvis/s3-sync-action@master
       with:
@@ -34,4 +35,4 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: 'us-east-1'   # optional: defaults to us-east-1
         SOURCE_DIR: 'public'      # optional: defaults to entire repository
-        FILES: ${{ steps.random-color-generator.outputs.COLOR }}
+        FILES: ${{ steps.files.outputs.all }}

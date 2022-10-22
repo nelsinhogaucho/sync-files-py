@@ -34,16 +34,21 @@ jobs:
     #   run: echo ${{ steps.random-color-generator.outputs.COLOR }}
     - name: Check out code
       uses: actions/checkout@v2
-    - name: build the docker
-      id: upload_files
-      run: |
-        docker build -t $CONTAINER_SHA \
-          --build-arg AWS_S3_BUCKET=${{ env.AWS_S3_BUCKET }} \
-          --build-arg AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }} \
-          --build-arg AWS_REGION='us-east-1' \
-          --build-arg SOURCE_DIR='public' \
-          --build-arg FILES=${{ steps.files.outputs.all }} \
-          ./sync-files-py/
+    # - name: build the docker
+    #   id: upload_files
+    #   run: |
+    #     docker build -t $CONTAINER_SHA \
+    #       --build-arg AWS_S3_BUCKET=${{ env.AWS_S3_BUCKET }} \
+    #       --build-arg AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }} \
+    #       --build-arg AWS_REGION='us-east-1' \
+    #       --build-arg SOURCE_DIR='public' \
+    #       --build-arg FILES=${{ steps.files.outputs.all }} \
+    #       ./sync-files-py/
+    - name: Hello world action step
+        uses: ./sync-files-py/ # Uses an action in the root directory
+        id: upload_files
+        with:
+          who-to-greet: 'NelsonSalinas'
     - name: Get the output time
       run: echo "The time was ${{ steps.upload_files.outputs.time }}"
     # - uses: actions/checkout@master

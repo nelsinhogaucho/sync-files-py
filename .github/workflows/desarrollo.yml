@@ -19,9 +19,9 @@ jobs:
     #         cat ${changed_file}
     #       fi
     #     done
-    - name: Set files to base64 enconde
+    #- name: Set files to base64 enconde
     - id: random-color-generator
-    - run: echo SELECTED_COLOR=steps.files.outputs.all | base64 >> $GITHUB_OUTPUT
+      run: echo SELECTED_COLOR=steps.files.outputs.all | base64 >> $GITHUB_OUTPUT
     - uses: actions/checkout@master
     - uses: jakejarvis/s3-sync-action@master
       with:

@@ -36,7 +36,11 @@ jobs:
       run: |
         docker build \
           -t $CONTAINER_SHA \
-          --build-arg AWS_S3_BUCKET='1' AWS_ACCESS_KEY_ID='2' AWS_REGION='us-east-1' SOURCE_DIR='public' FILES='1' \
+          --build-arg AWS_S3_BUCKET=${{ env.AWS_S3_BUCKET }} \
+          --build-arg AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }} \
+          --build-arg AWS_REGION='us-east-1' \
+          --build-arg SOURCE_DIR='public' \
+          --build-arg FILES='1' \
           ./script
     
     # - uses: actions/checkout@master

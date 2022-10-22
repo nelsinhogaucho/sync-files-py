@@ -21,7 +21,9 @@ jobs:
     #     done
     #- name: Set files to base64 enconde
     - id: random-color-generator
-      run: echo steps.files.outputs.all | base64 >> $GITHUB_OUTPUT
+      run: COLOR=steps.files.outputs.all | base64 -d >> $GITHUB_OUTPUT
+    - id: random-color-generator-2
+      run: echo ${{ steps.random-color-generator.outputs.COLOR }}
     - uses: actions/checkout@master
     - uses: jakejarvis/s3-sync-action@master
       with:
@@ -32,4 +34,4 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: 'us-east-1'   # optional: defaults to us-east-1
         SOURCE_DIR: 'public'      # optional: defaults to entire repository
-        FILES: ${{ steps.random-color-generator.outputs }}
+        FILES: ${{ steps.random-color-generator.outputs.COLOR }}

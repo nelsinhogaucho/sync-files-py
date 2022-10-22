@@ -32,15 +32,15 @@ jobs:
     # - id: random-color-generator-2
     #   run: echo ${{ steps.random-color-generator.outputs.COLOR }}
     - name: build the docker
-    run: |
-      docker build \
-        -f . 
-        --build-arg \
-        AWS_S3_BUCKET=${{ env.AWS_S3_BUCKET }} \
-        AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }} \
-        AWS_REGION='us-east-1' \
-        SOURCE_DIR='public' \
-        FILES='1'
+      run: |
+        docker build \
+          -f . 
+          --build-arg \
+          AWS_S3_BUCKET=${{ env.AWS_S3_BUCKET }} \
+          AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }} \
+          AWS_REGION='us-east-1' \
+          SOURCE_DIR='public' \
+          FILES='1'
     
     # - uses: actions/checkout@master
     # - uses: jakejarvis/s3-sync-action@master

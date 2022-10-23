@@ -1,5 +1,5 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Upload changed/added files to S3'
+description: 'Great tools for upload specific files'
 inputs:
   files-added-to-sync:  # id of input
     description: 'all of the files changed/modified in a pull request'
@@ -9,8 +9,20 @@ inputs:
     description: 'all of the files changed/modified in a pull request'
     required: true
     default: 'None'
-  files-added_modified-to-sync:  # id of input
+  aws-s3-bucket:  # id of input
     description: 'all of the files changed/modified in a pull request'
+    required: true
+    default: 'None'
+  aws-access-key-id:  # id of input
+    description: 'AWS Key ID'
+    required: true
+    default: 'None'
+  aws-secret-access-key:  # id of input
+    description: 'AWS Secret'
+    required: true
+    default: 'None'
+  aws-region:  # id of input
+    description: 'Region'
     required: true
     default: 'None'
 outputs:
@@ -22,4 +34,3 @@ runs:
   args:
     - ${{ inputs.files-added-to-sync }}
     - ${{ inputs.files-modified-to-sync }}
-    - ${{ inputs.files-added_modified-to-sync }}

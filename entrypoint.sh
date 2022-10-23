@@ -1,6 +1,6 @@
 #!/bin/sh -l
 
-echo "Hello $1 | $2 | $3 | $4 | $5"
+echo "Hello $1 | $2 | $3 | $4 | $5 | $6"
 
 # Create a dedicated profile for this action to avoid conflicts
 # with past/future actions.

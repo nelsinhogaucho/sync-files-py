@@ -34,3 +34,7 @@ runs:
   args:
     - ${{ inputs.files-added-to-sync }}
     - ${{ inputs.files-modified-to-sync }}
+    - ${{ inputs.aws-s3-bucket }}
+    - ${{ inputs.aws-access-key-id }}
+    - ${{ inputs.aws-secret-access-key }}
+    - ${{ inputs.aws-region }}

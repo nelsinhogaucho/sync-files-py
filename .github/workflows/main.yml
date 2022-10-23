@@ -16,7 +16,9 @@ jobs:
         id: hello
         uses: ./
         with:
-          files-to-sync: ${{ steps.files.outputs.all }}
+          files-added-to-sync: ${{ steps.files.outputs.added }}
+          files-modified-to-sync: ${{ steps.files.outputs.modified }}
+          files-added_modified-to-sync: ${{ steps.files.outputs.added_modified }}
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"

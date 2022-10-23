@@ -19,8 +19,7 @@ for file in $files_added; do
     # All other flags are optional via the `args:` directive.
     sh -c "aws s3 sync ./$file s3://$3/$file \
                 --profile s3-sync-action \
-                --no-progress \
-                ${ENDPOINT_APPEND} $*"
+                --no-progress"
 done
 
 files_modified="$2"
@@ -30,8 +29,7 @@ for file in $files_modified; do
     # All other flags are optional via the `args:` directive.
     sh -c "aws s3 sync ./$files_modified s3://$3/$files_modified \
                 --profile s3-sync-action \
-                --no-progress \
-                ${ENDPOINT_APPEND} $*"
+                --no-progress"
 done
 
 # Clear out credentials after we're done.

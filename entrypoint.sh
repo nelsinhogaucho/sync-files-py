@@ -27,7 +27,7 @@ for file in $files_modified; do
     echo "MODIFIED: $file"
     # Sync using our dedicated profile and suppress verbose messages.
     # All other flags are optional via the `args:` directive.
-    sh -c "aws s3 sync ./$files_modified s3://$3/$files_modified \
+    sh -c "aws s3 sync ./$file s3://$3/$file \
                 --profile s3-sync-action \
                 --no-progress"
 done

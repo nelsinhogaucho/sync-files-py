@@ -40,9 +40,9 @@ for file in $files_modified; do
                 --no-progress"
     # Sync using our dedicated profile and suppress verbose messages.
     # All other flags are optional via the `args:` directive.
-    sh -c "aws s3 sync ./$file s3://$3/$file \
-                --profile s3-sync-action \
-                --no-progress"
+    aws s3 sync "./$file" "s3://$3/$file" --profile s3-sync-action --no-progress
+
+    echo "/MODIFIED: $file"
 done
 
 # Clear out credentials after we're done.

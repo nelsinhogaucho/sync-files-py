@@ -35,12 +35,12 @@ files_modified="$2"
 for file in $files_modified; do
     echo "MODIFIED: $file"
 
-    echo "aws s3 sync ./$file s3://$3/$file \
-                --profile s3-sync-action \
-                --no-progress"
+    cmd="aws s3 sync ./$file s3://$3/$file --profile s3-sync-action --no-progress"
+
+    eval $cmd
     # Sync using our dedicated profile and suppress verbose messages.
     # All other flags are optional via the `args:` directive.
-    aws s3 sync "./$file" "s3://$3/$file" --profile s3-sync-action --no-progress
+    #aws s3 sync "./$file" "s3://$3/$file" --profile s3-sync-action --no-progress
 
     echo "/MODIFIED: $file"
 done

@@ -19,7 +19,7 @@ files_added="$1"
 for file in $files_added; do
     echo "ADDED: $file"
 
-    cmd="aws s3 sync s3 s3://$3/$file --profile s3-sync-action --no-progress"
+    cmd="aws s3 sync $file s3://$3/$file --profile s3-sync-action --no-progress"
 
     eval $cmd
 
@@ -29,7 +29,7 @@ files_modified="$2"
 for file in $files_modified; do
     echo "MODIFIED: $file"
 
-    cmd="aws s3 sync s3 s3://$3/$file --profile s3-sync-action --no-progress"
+    cmd="aws s3 sync $file s3://$3/$file --profile s3-sync-action --no-progress"
 
     eval $cmd
 

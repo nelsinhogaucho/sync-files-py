@@ -14,33 +14,24 @@ EOF
 ls -la
 
 
-
 export IFS=","
 files_added="$1"
 for file in $files_added; do
     echo "ADDED: $file"
 
-    echo "aws s3 sync ./$file s3://$3/$file \
-                --profile s3-sync-action \
-                --no-progress"
+    cmd="aws s3 sync s3 s3://$3/$file --profile s3-sync-action --no-progress --exclude 'action.yml' --exclude '*.sh' --exclude 'Dockerfile'"
 
-    # Sync using our dedicated profile and suppress verbose messages.
-    # All other flags are optional via the `args:` directive.
-    sh -c "aws s3 sync ./$file s3://$3/$file \
-                --profile s3-sync-action \
-                --no-progress"
+    eval $cmd
+
 done
 
 files_modified="$2"
 for file in $files_modified; do
     echo "MODIFIED: $file"
 
-    cmd="aws s3 sync s3 s3://$3/$file --profile s3-sync-action --no-progress"
+    cmd="aws s3 sync s3 s3://$3/$file --profile s3-sync-action --no-progress --exclude 'action.yml' --exclude '*.sh' --exclude 'Dockerfile'"
 
     eval $cmd
-    # Sync using our dedicated profile and suppress verbose messages.
-    # All other flags are optional via the `args:` directive.
-    #aws s3 sync "./$file" "s3://$3/$file" --profile s3-sync-action --no-progress
 
     echo "/MODIFIED: $file"
 done

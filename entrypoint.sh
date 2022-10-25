@@ -13,6 +13,10 @@ EOF
 
 ls -la
 pwd
+cd ..
+cd ..
+pwd
+ls -la
 
 export IFS=","
 files_added="$1"

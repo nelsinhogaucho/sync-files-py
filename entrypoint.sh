@@ -11,13 +11,7 @@ $6
 text
 EOF
 
-ls -la
-pwd
-cd ..
-cd ..
-pwd
-ls -la
-pwd
+cd /s3
 
 export IFS=","
 files_added="$1"

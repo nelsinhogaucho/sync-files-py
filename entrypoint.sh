@@ -26,7 +26,7 @@ for file in $files_added; do
     dirname /$file
     dir=dirname /$file
 
-    cmd="aws s3 sync $dir s3://$3/$file --profile s3-sync-action --no-progress --exclude *.sh --size-only"
+    cmd="aws s3 sync ${dir} s3://$3/$file --profile s3-sync-action --no-progress --exclude *.sh --size-only"
     echo $cmd
     eval $cmd
 
@@ -38,7 +38,7 @@ for file in $files_modified; do
     dirname /$file
     dir=dirname /$file
 
-    cmd="aws s3 sync $dir s3://$3/$file --profile s3-sync-action --no-progress --exclude *.sh --size-only"
+    cmd="aws s3 sync ${dir} s3://$3/$file --profile s3-sync-action --no-progress --exclude *.sh --size-only"
     echo $cmd
     eval $cmd
 

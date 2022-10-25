@@ -17,16 +17,16 @@ cd ..
 cd ..
 pwd
 ls -la
-cd s3/
-ls -ltra
 pwd
 
 export IFS=","
 files_added="$1"
 for file in $files_added; do
     echo "ADDED: $file"
+    dirname ./$file
+    dir=dirname ./$file
 
-    cmd="aws s3 sync $file s3://$3/$file --profile s3-sync-action --no-progress --exclude *.sh --size-only"
+    cmd="aws s3 sync $dir s3://$3/$file --profile s3-sync-action --no-progress --exclude *.sh --size-only"
     echo $cmd
     eval $cmd
 
@@ -35,8 +35,10 @@ done
 files_modified="$2"
 for file in $files_modified; do
     echo "MODIFIED: $file"
+    dirname ./$file
+    dir=dirname ./$file
 
-    cmd="aws s3 sync $file s3://$3/$file --profile s3-sync-action --no-progress --exclude *.sh --size-only"
+    cmd="aws s3 sync $dir s3://$3/$file --profile s3-sync-action --no-progress --exclude *.sh --size-only"
     echo $cmd
     eval $cmd
 

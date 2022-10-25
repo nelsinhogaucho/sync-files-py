@@ -19,6 +19,7 @@ pwd
 ls -la
 cd s3/
 ls -ltra
+pwd
 
 export IFS=","
 files_added="$1"

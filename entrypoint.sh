@@ -19,10 +19,14 @@ for file in $files_added; do
     echo "ADDED: $file"
     dirname /$file
     #dir=dirname /$file
+    CURRENT=`pwd`
+    BASENAME=`basename "$CURRENT"`
+
+    echo "$BASENAME"
 
     cmd="aws s3 sync $(dirname /$file) s3://$3/$(dirname /$file) --profile s3-sync-action --no-progress --exclude *.sh --size-only"
     echo $cmd
-    eval $cmd
+    #eval $cmd
 
 done
 
@@ -30,11 +34,16 @@ files_modified="$2"
 for file in $files_modified; do
     echo "MODIFIED: $file"
     dirname /$file
+
+    CURRENT=`pwd`
+    BASENAME=`basename "$CURRENT"`
+
+    echo "$BASENAME"
     #dir=dirname /$file
 
     cmd="aws s3 sync $(dirname /$file) s3://$3/$(dirname /$file) --profile s3-sync-action --no-progress --exclude *.sh --size-only"
     echo $cmd
-    eval $cmd
+    #eval $cmd
 
     echo "/MODIFIED: $file"
 done

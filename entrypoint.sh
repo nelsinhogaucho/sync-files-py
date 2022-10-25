@@ -24,6 +24,8 @@ for file in $files_added; do
 
     echo "$BASENAME"
 
+    if [ "$(dirname /$file)" = "/" ]; then break;
+
     cmd="aws s3 sync $(dirname /$file) s3://$3/$(dirname /$file) --profile s3-sync-action --no-progress --exclude *.sh --size-only"
     echo $cmd
     #eval $cmd
@@ -39,7 +41,7 @@ for file in $files_modified; do
     BASENAME=`basename "$CURRENT"`
 
     echo "$BASENAME"
-    #dir=dirname /$file
+    if [ "$(dirname /$file)" = "/" ]; then break;
 
     cmd="aws s3 sync $(dirname /$file) s3://$3/$(dirname /$file) --profile s3-sync-action --no-progress --exclude *.sh --size-only"
     echo $cmd

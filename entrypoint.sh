@@ -24,7 +24,7 @@ for file in $files_added; do
 
     echo "$BASENAME"
 
-    if [ "$(dirname /$file)" = "/" ]; then break;
+    if [ "$(dirname /$file)" = "/" ]; then break; fi
 
     cmd="aws s3 sync $(dirname /$file) s3://$3/$(dirname /$file) --profile s3-sync-action --no-progress --exclude *.sh --size-only"
     echo $cmd

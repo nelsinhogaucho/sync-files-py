@@ -17,10 +17,9 @@ cd ..
 cd ..
 pwd
 ls -la
-cd s3/financiamiento
+cd s3/
 ls -ltra
-cd ..
-cd ..
+
 export IFS=","
 files_added="$1"
 for file in $files_added; do
